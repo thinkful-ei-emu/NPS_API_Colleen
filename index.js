@@ -17,14 +17,16 @@ function formatQueryItems(params){
 function displayResults(responseJson) {
   console.log(responseJson);
   $('#results-list').empty();
-  responseJson.data.forEach(park => {
+  
+  for (let i= 0; i < responseJson.data.length-1; i++){
+
     $('#results-list').append(
-      `<li><h3>${park.fullName}</h3>
-      <a href=${park.url}>Park Website</a>
-      <p>${park.description}</p>
+      `<li><h3>${responseJson.data[i].fullName}</h3>
+      <a href=${responseJson.data[i].url}>Park Website</a>
+      <p>${responseJson.data[i].description}</p>
       </li>` 
     );
-  });
+  }
   $('#results').removeClass('hidden');
 }
 
